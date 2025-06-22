@@ -14,10 +14,8 @@ Es könnte auch hilfreich sein, die YAML-Konfiguration deiner ESPHome-Firmware b
 
 Bitte verwende immer die Vorlage für Problemberichte im Ticket-System, da diese einige vorausgefüllte Hinweise darauf enthält, welche Informationen du in deinem Ticket angeben solltest.
 
-## 💡 Neue Funktionalität anfragen
-Falls du eine neue Funktion benötigst oder der Meinung sind, dass eine bestehende Funktion geändert werden muss, diskutiere bitte zuerst deine Idee im [Diskussionsforum](https://github.com/jensrossbach/esphome-ferraris-meter/discussions/categories/ideas) in der Kategorie **Ideas**. Wenn der Konsens ist, dass diese Idee es wert ist, umgesetzt zu werden, dann erstelle einen **Feature Request** oder einen **Change Request** im [Ticket-System](https://github.com/jensrossbach/esphome-ferraris-meter/issues).
-
-Bitte verwende immer die Vorlage für Funktionsanfragen im Ticket-System, da diese einige vorausgefüllte Hinweise darüber enthält, welche Informationen du in deiner Anfrage angeben solltest.
+## 💡 Neue Funktionalität oder Änderungen anfragen
+Falls du eine neue Funktion benötigst oder der Meinung sind, dass eine bestehende Funktion geändert werden muss, erstelle einen Eintrag in der Kategorie [Ideas & Requests](https://github.com/jensrossbach/esphome-ferraris-meter/discussions/categories/ideas-requests) im Diskussionsforum.
 
 ## 👍 Feedback geben
 Deine Kommentare und dein Feedback sind willkommen. Bitte teile deine Meinung im [Diskussionsforum](https://github.com/jensrossbach/esphome-ferraris-meter/discussions/categories/feedback) in der Kategorie **Feedback** mit.
@@ -40,10 +38,8 @@ It could also be helpful to provide the YAML configuration of your ESPHome firmw
 
 Please always use the Problem Report template in the issue tracker as it provides some prefilled hints about which information you should provide in your report.
 
-## 💡 Requesting Features
-In case you need a new feature or think that some existing functionality requires modifications, please first discuss your idea on the [discussion forum](https://github.com/jensrossbach/esphome-ferraris-meter/discussions/categories/ideas) in the **Ideas** category. If the consensus is that this idea is worth being implemented, then and only then create a **Feature Request** or a **Change Request** in the [issue tracker](https://github.com/jensrossbach/esphome-ferraris-meter/issues).
-
-Please always use the Feature Request template in the issue tracker as it provides some prefilled hints about which information you should provide in your request.
+## 💡 Requesting Features or Changes
+In case you need a new feature or think that some existing functionality requires modifications, please enter a new item in the category [Ideas & Requests](https://github.com/jensrossbach/esphome-ferraris-meter/discussions/categories/ideas-requests) in the discussion forum.
 
 ## 👍 Providing Feedback
 Your comments and feedback are welcome, please share your opinion on the [discussion forum](https://github.com/jensrossbach/esphome-ferraris-meter/discussions/categories/feedback) in the **Feedback** category.

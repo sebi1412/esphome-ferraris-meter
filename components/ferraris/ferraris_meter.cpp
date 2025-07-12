@@ -109,7 +109,7 @@ namespace esphome::ferraris
                     {
                         ++m_iteration_counter;
 
-                        ESP_LOGD(
+                        ESP_LOGI(
                             TAG, "Starting automatic analog calibration:  CAPT %u  DIST %.1f  ITER %u/%u",
                             m_num_captured_values, m_min_level_distance, m_iteration_counter, m_max_iterations);
                         set_analog_calibration_state(true);
@@ -118,20 +118,20 @@ namespace esphome::ferraris
                         m_on_level = value;
                         m_off_level = value;
 
-                        ESP_LOGD(TAG, "Calibrating initial levels:  VAL %.1f", value);
+                        ESP_LOGI(TAG, "Calibrating initial levels:  VAL %.1f", value);
                     }
                     else
                     {
                         if (value > m_on_level)
                         {
                             m_on_level = value;
-                            ESP_LOGD(TAG, "Calibrating ON level:  VAL %.1f", m_on_level);
+                            ESP_LOGI(TAG, "Calibrating ON level:  VAL %.1f", m_on_level);
                         }
 
                         if (value < m_off_level)
                         {
                             m_off_level = value;
-                            ESP_LOGD(TAG, "Calibrating OFF level:  VAL %.1f", m_off_level);
+                            ESP_LOGI(TAG, "Calibrating OFF level:  VAL %.1f", m_off_level);
                         }
                     }
 
@@ -152,7 +152,7 @@ namespace esphome::ferraris
                                 m_analog_input_threshold = threshold;
                             }
 
-                            ESP_LOGD(TAG, "Automatic analog calibration finished:  OFF %.1f  ON %.1f  TRSH %.1f", m_off_level, m_on_level, threshold);
+                            ESP_LOGI(TAG, "Automatic analog calibration finished:  OFF %.1f  ON %.1f  TRSH %.1f", m_off_level, m_on_level, threshold);
                             set_analog_calibration_state(false, m_on_level - m_off_level);
                         }
                         else if (m_iteration_counter < m_max_iterations)
@@ -345,7 +345,7 @@ namespace esphome::ferraris
     {
         if (state != m_last_state)
         {
-            ESP_LOGD(TAG, "State change:  %d -> %d", m_last_state, state);
+            ESP_LOGI(TAG, "State change:  %d -> %d", m_last_state, state);
 
             if (m_calibration_mode)
             {
@@ -372,16 +372,16 @@ namespace esphome::ferraris
 
                         if (falling_to_rising_duration < m_debounce_threshold)
                         {
-                            ESP_LOGD(TAG, "Ignoring falling to rising duration below threshold:  %u ms", falling_to_rising_duration);
+                            ESP_LOGI(TAG, "Ignoring falling to rising duration below threshold:  %u ms", falling_to_rising_duration);
                         }
                         else
                         {
                             uint32_t rotation_time = get_duration(m_last_rising_time, now);
 
-                            ESP_LOGD(TAG, "Rotation time:  %u ms", rotation_time);
+                            ESP_LOGI(TAG, "Rotation time:  %u ms", rotation_time);
 
                             m_rotation_counter++;
-                            ESP_LOGD(TAG, "Updated rotation counter:  %u rotations", m_rotation_counter);
+                            ESP_LOGI(TAG, "Updated rotation counter:  %u rotations", m_rotation_counter);
 
                             update_power_consumption(rotation_time);
                             update_energy_counter();
@@ -430,7 +430,7 @@ namespace esphome::ferraris
         if (!m_start_value_received)
         {
             m_rotation_counter = static_cast<uint64_t>(value / 1000 * m_rotations_per_kwh);
-            ESP_LOGD(TAG, "Restored rotation counter:  %u rotations", m_rotation_counter);
+            ESP_LOGI(TAG, "Restored rotation counter:  %u rotations", m_rotation_counter);
 
             m_start_value_received = true;
             update_energy_counter();
@@ -440,7 +440,7 @@ namespace esphome::ferraris
     void FerrarisMeter::set_energy_meter(float value)
     {
         m_rotation_counter = static_cast<uint64_t>(std::round(value * m_rotations_per_kwh));
-        ESP_LOGD(TAG, "Set energy meter:  %.2f kWh (%u rotations)", value, m_rotation_counter);
+        ESP_LOGI(TAG, "Set energy meter:  %.2f kWh (%u rotations)", value, m_rotation_counter);
 
         update_energy_counter();
     }
@@ -448,7 +448,7 @@ namespace esphome::ferraris
     void FerrarisMeter::set_rotation_counter(uint64_t value)
     {
         m_rotation_counter = value;
-        ESP_LOGD(TAG, "Set rotation counter:  %u rotations", m_rotation_counter);
+        ESP_LOGI(TAG, "Set rotation counter:  %u rotations", m_rotation_counter);
 
         update_energy_counter();
     }
@@ -461,7 +461,7 @@ namespace esphome::ferraris
             float pwr = static_cast<float>(KWH_TO_WMS) / (rotation_time * m_rotations_per_kwh);
 
             m_power_consumption_sensor->publish_state(pwr);
-            ESP_LOGD(TAG, "Published power consumption sensor state: %.2f W", pwr);
+            ESP_LOGI(TAG, "Published power consumption sensor state: %.2f W (%d Rotationtime)", pwr, rotation_time);
         }
 #endif
     }
@@ -474,7 +474,7 @@ namespace esphome::ferraris
             float energy = static_cast<float>(m_rotation_counter) / m_rotations_per_kwh * WATTS_PER_KW;
 
             m_energy_meter_sensor->publish_state(energy);
-            ESP_LOGD(TAG, "Published energy meter sensor state: %.2f Wh (%d rotations)", energy, m_rotation_counter);
+            ESP_LOGI(TAG, "Published energy meter sensor state: %.2f Wh (%d rotations)", energy, m_rotation_counter);
         }
 #endif
     }
